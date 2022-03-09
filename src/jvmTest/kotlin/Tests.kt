@@ -28,11 +28,11 @@ class Tests {
     private fun doTest(request: StatisticRequest, gold: StatisticResponse, testCase: Int) {
         val actual = getResponse(request)
 
-        if (gold.top5 != actual.top5) {
+        if (gold.topWorlds != actual.topWorlds) {
             throw WrongAnswer("top 5 words differs", testCase)
         }
 
-        if (gold.media != actual.media) {
+        if (gold.images != actual.images) {
             throw WrongAnswer("media differs", testCase)
         }
     }
