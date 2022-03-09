@@ -31,6 +31,8 @@ kotlin {
         withJava()
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
+            minHeapSize = "1024m"
+            maxHeapSize = "4096m"
         }
     }
     js(LEGACY) {
@@ -79,13 +81,20 @@ kotlin {
                 // https://docs.mongodb.com/manual/administration/install-community/
                 // https://litote.org/kmongo
                 implementation("org.litote.kmongo:kmongo-coroutine:4.2.8")
+                implementation("org.jsoup:jsoup:1.14.3")
+                implementation("commons-cli:commons-cli:1.5.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation("commons-io:commons-io:2.11.0")
+                implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
+                implementation("org.slf4j:slf4j-api:1.7.36")
+                implementation("org.slf4j:slf4j-simple:1.7.36")
             }
         }
         val jvmTest by getting {
             dependencies {
+                implementation("org.junit.jupiter:junit-jupiter:5.8.1")
                 // https://ktor.io/docs/testing.html
                 implementation("io.ktor:ktor-server-test-host:$ktor_version")
-                implementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
             }
         }
 
